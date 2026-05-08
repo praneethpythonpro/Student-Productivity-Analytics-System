@@ -1,0 +1,60 @@
+student_names = []
+study_hours = []
+sleep_hours = []
+productivity_scores = []
+
+total_students = int(input("Enter number of students: "))
+
+for i in range(total_students):
+    print("\nStudent", i + 1)
+
+    name = input("Enter student name: ")
+    study = int(input("Enter study hours: "))
+    sleep = int(input("Enter sleep hours: "))
+
+    productivity = (study * 10) + (sleep * 5)
+
+    student_names.append(name)
+    study_hours.append(study)
+    sleep_hours.append(sleep)
+    productivity_scores.append(productivity)
+
+print("\n----- Productivity Analytics Report -----")
+
+highest_score = max(productivity_scores)
+top_student = productivity_scores.index(highest_score)
+
+for i in range(total_students):
+    print("\nName:", student_names[i])
+    print("Study Hours:", study_hours[i])
+    print("Sleep Hours:", sleep_hours[i])
+    print("Productivity Score:", productivity_scores[i])
+
+    if productivity_scores[i] >= 100:
+        print("Performance: Excellent")
+    elif productivity_scores[i] >= 70:
+        print("Performance: Good")
+    else:
+        print("Performance: Needs Improvement")
+
+average_score = sum(productivity_scores) / total_students
+
+print("\nAverage Productivity Score:", average_score)
+
+print("\nTop Performing Student:", student_names[top_student])
+print("Highest Score:", highest_score)
+
+best_study = max(study_hours)
+least_sleep = min(sleep_hours)
+
+print("\nHighest Study Hours:", best_study)
+print("Lowest Sleep Hours:", least_sleep)
+
+print("\n----- Final Insights -----")
+
+if average_score >= 90:
+    print("Overall class productivity is very high.")
+elif average_score >= 70:
+    print("Overall class productivity is moderate.")
+else:
+    print("Overall class productivity needs improvement.")
